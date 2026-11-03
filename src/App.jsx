@@ -4,6 +4,7 @@ import AboutPage from './pages/AboutPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import HomePage from './pages/HomePage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
+import AreaAdministrativa from './pages/admin/AdminArea.jsx';
 import ProjectPage from './pages/ProjectPage.jsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
 
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="projetos" element={<ProjectsPage />} />
           <Route path="projetos/:name" element={<ProjectPage />} />
           <Route path="contato" element={<ContactPage />} />
+          <Route path="painel/*" element={<AreaAdministrativa />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
