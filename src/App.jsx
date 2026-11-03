@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
 import Layout from './components/Layout.jsx';
 import AboutPage from './pages/AboutPage.jsx';
+import ContactPage from './pages/ContactPage.jsx';
 import HomePage from './pages/HomePage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
-import PlaceholderPage from './pages/PlaceholderPage.jsx';
 import ProjectPage from './pages/ProjectPage.jsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
 
@@ -16,16 +16,7 @@ export default function App() {
           <Route path="sobre" element={<AboutPage />} />
           <Route path="projetos" element={<ProjectsPage />} />
           <Route path="projetos/:name" element={<ProjectPage />} />
-          <Route
-            path="contato"
-            element={
-              <PlaceholderPage
-                eyebrow="PORTFÓLIO / CONTATO"
-                title="Vamos conversar"
-                description="O formulário de contato será integrado nas próximas etapas."
-              />
-            }
-          />
+          <Route path="contato" element={<ContactPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
