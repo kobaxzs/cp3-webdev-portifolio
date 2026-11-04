@@ -78,11 +78,3 @@ O dashboard usa a tabela `messages` e `featured_projects`, enquanto o login exig
 4. Publique a branch principal.
 
 A pasta `api/` é usada para o endpoint de contato em produção.
-
-## Checklist final
-
-- `.env` não foi enviado para o repositório
-- chaves privadas não ficaram em variáveis com prefixo `VITE_`
-- Supabase e Resend foram configurados
-- painel de administração acessado por conta autorizada
-- formulário de contato salva a mensagem antes de tentar enviar e-mail
