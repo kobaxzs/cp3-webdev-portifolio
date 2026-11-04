@@ -68,13 +68,11 @@ export default function PaginaLogin() {
   }
 
   return (
-    <div className="container page section panel-page">
+    <div className="container page section panel-page panel-page-login">
       <div className="panel-card panel-login">
         <p className="eyebrow">PAINEL / LOGIN</p>
         <h1>Entrar no painel</h1>
-        <p className="muted">
-          Faça login com a conta autorizada para gerenciar mensagens e destaques do portfólio.
-        </p>
+        <p className="muted">Apenas o proprietário tem acesso a esta área</p>
 
         <form className="panel-form" onSubmit={enviarFormulario}>
           <label>

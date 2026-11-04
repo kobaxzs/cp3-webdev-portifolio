@@ -19,6 +19,21 @@ export async function carregarMensagens() {
   return data ?? [];
 }
 
+export async function marcarMensagemRespondida(id, respondida) {
+  validarConfiguracao();
+
+  const { data, error } = await clienteSupabase
+    .from('messages')
+    .update({ responded: respondida })
+    .eq('id', id)
+    .select('id')
+    .single();
+
+  if (error || !data) {
+    throw new Error('Não foi possível atualizar o status da mensagem.');
+  }
+}
+
 export async function carregarProjetosDestacados() {
   validarConfiguracao();
 
@@ -42,9 +57,9 @@ export async function alterarProjetoDestacado(nome, ativado) {
   }
 
   if (ativado) {
-    const { error } = await clienteSupabase.from('featured_projects').insert({
-      repo_name: nomeNormalizado,
-    });
+    const { error } = await clienteSupabase
+      .from('featured_projects')
+      .upsert({ repo_name: nomeNormalizado }, { onConflict: 'repo_name', ignoreDuplicates: true });
 
     if (error) throw error;
     return;

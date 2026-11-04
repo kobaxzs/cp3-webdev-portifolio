@@ -13,8 +13,12 @@ create table if not exists public.messages (
   subject text not null,
   message text not null,
   created_at timestamptz not null default now(),
+  responded boolean not null default false,
   email_sent boolean not null default false
 );
+
+alter table public.messages
+  add column if not exists responded boolean not null default false;
 
 create table if not exists public.featured_projects (
   id uuid primary key default gen_random_uuid(),

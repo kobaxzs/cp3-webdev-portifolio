@@ -98,7 +98,8 @@ export default function Layout() {
             <a href="https://github.com/kobaxzs" target="_blank" rel="noreferrer">
               GitHub <Icon name="arrow" size={14} />
             </a>
-            <Link to="/sobre">Sobre mim</Link>
+            <Link to="/contato">Contato</Link>
+            <Link to="/painel">Área do proprietário</Link>
           </div>
         </div>
       </footer>
