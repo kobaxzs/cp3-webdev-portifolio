@@ -1877,17 +1877,27 @@ h1 > span,
 
 .contact-layout {
   display: grid;
-  grid-template-columns: 0.8fr 1.4fr;
-  gap: 90px;
+  grid-template-columns: minmax(230px, 0.8fr) minmax(0, 1.4fr);
+  gap: clamp(36px, 5vw, 90px);
+  align-items: start;
   border-top: 1px solid var(--borda);
   padding-top: 50px;
 }
 
+.contact-aside {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  max-width: 320px;
+}
+
 .contact-aside h2 {
   font-size: 1.9rem;
+  margin-bottom: 4px;
 }
 
 .contact-aside > p {
+  margin-bottom: 12px;
   font-size: 0.84rem;
   color: var(--texto-suave);
 }
@@ -1906,7 +1916,8 @@ h1 > span,
   display: flex;
   align-items: center;
   gap: 12px;
-  padding-block: 20px;
+  min-height: 70px;
+  padding-block: 18px;
   border-bottom: 1px solid var(--borda);
   font-size: 0.76rem;
   overflow-wrap: anywhere;
@@ -1931,6 +1942,7 @@ h1 > span,
 .contact-form {
   display: grid;
   gap: 12px;
+  align-self: start;
 }
 
 .form-row {
@@ -2021,6 +2033,7 @@ h1 > span,
   .contact-aside {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    max-width: none;
     gap: 0 25px;
   }
 

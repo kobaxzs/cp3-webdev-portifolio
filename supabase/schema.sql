@@ -33,17 +33,20 @@ grant select, update on public.messages to authenticated;
 grant select on public.featured_projects to anon, authenticated;
 grant insert, delete on public.featured_projects to authenticated;
 
-create policy if not exists owner_self on public.portfolio_owners
+drop policy if exists owner_self on public.portfolio_owners;
+create policy owner_self on public.portfolio_owners
   for select to authenticated
   using (id = auth.uid());
 
-create policy if not exists owner_messages_read on public.messages
+drop policy if exists owner_messages_read on public.messages;
+create policy owner_messages_read on public.messages
   for select to authenticated
   using (exists (
     select 1 from public.portfolio_owners where id = auth.uid()
   ));
 
-create policy if not exists owner_messages_update on public.messages
+drop policy if exists owner_messages_update on public.messages;
+create policy owner_messages_update on public.messages
   for update to authenticated
   using (exists (
     select 1 from public.portfolio_owners where id = auth.uid()
@@ -52,13 +55,15 @@ create policy if not exists owner_messages_update on public.messages
     select 1 from public.portfolio_owners where id = auth.uid()
   ));
 
-create policy if not exists owner_featured_insert on public.featured_projects
+drop policy if exists owner_featured_insert on public.featured_projects;
+create policy owner_featured_insert on public.featured_projects
   for insert to authenticated
   with check (exists (
     select 1 from public.portfolio_owners where id = auth.uid()
   ));
 
-create policy if not exists owner_featured_delete on public.featured_projects
+drop policy if exists owner_featured_delete on public.featured_projects;
+create policy owner_featured_delete on public.featured_projects
   for delete to authenticated
   using (exists (
     select 1 from public.portfolio_owners where id = auth.uid()
